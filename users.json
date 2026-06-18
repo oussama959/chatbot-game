@@ -1,0 +1,42 @@
+[
+  {
+    "username": "oussama",
+    "email": "oussamamansouri000@gmail.com",
+    "password": "scrypt:32768:8:1$QxK5hIiDtJO6TECW$8c9f75d810bffc04bfcb1c856904b44278f3540feb8ce43d83917304c26c6de8e93a8a54c0947f986ee48d78e259ec3c296c654547cb8f62e71d795e05256178"
+  },
+  {
+    "username": "ibtihel",
+    "email": "test@gmail.com",
+    "password": "scrypt:32768:8:1$EdnCyIHIGqeOCJlz$184f3067f2d3162520083e857048fd06c1170870824ad6f3434878cfa03db2db35072ac6706b4b4a9d51bd5bab9d77f833b620e60a77e566ce2bfecbeb8c126b"
+  },
+  {
+    "username": "maram",
+    "email": "maram@gmail.com",
+    "password": "scrypt:32768:8:1$jsHDr1kGGpnC10d6$1eeb77d0a10f65cb2fb6bc9bb99f9a6f79e203f695493b016115e4a49291487f849e13d4f79827fb7a5ea1d68c32e1fec190d471150e0fdbb2092ca679821445"
+  },
+  {
+    "username": "test",
+    "email": "test1@gmail.com",
+    "password": "scrypt:32768:8:1$ljXEzgANqdW3bGto$39e69c6914515109fd395bf20d3a104658525edd7f07ad056b4fdef04735f10a5899de2c7346ab82282b4c6ad9563235796191bbea3eae4f7d462c3d93ce540e"
+  },
+  {
+    "username": "tesnim",
+    "email": "tesnim@gmail.com",
+    "password": "scrypt:32768:8:1$E6kAkav8Qv1Q920z$83410a33c0dc37cc226529dad4d45d3760340fd67826b545890cd2b67d8fb3f411267920a9558e771cf5c5dc2ffa17532af65dd6365e156c39f3521bcffb7f28"
+  },
+  {
+    "username": "firas",
+    "email": "firas@gmail.com",
+    "password": "scrypt:32768:8:1$aD1XOw97D8d74tzC$edcfbe5d1508a64ebe9b9d8ea75d9bbdbe0b0dc79b529ecdf278af757cc68065cb35be3d58fb7883c1e95aec2b7147f795658be32eebeaa7f1361ecef9995c2d"
+  },
+  {
+    "username": "nedra",
+    "email": "nedra@gmail.com",
+    "password": "scrypt:32768:8:1$ckYxKxPBiUCIkjdG$16ea932a63b1a27a8748986de7790cfc02b27b593cd3ccba7c574b771458dcc2aebb9e0b3cff87c321f19e1251e0f2dd6f3e3ab699e353469a29e906756a52a3"
+  },
+  {
+    "username": "linda",
+    "email": "linda@gmail.com",
+    "password": "scrypt:32768:8:1$uqrxkp3vzlb9ffwg$2a9d5d28f81132c8aeab709994efa262a31316e68613a93d06c6e8437d65007bfc97b05a25da1948e4a011748de330820049c27a23740e1a484b395d94bbcebb"
+  }
+]

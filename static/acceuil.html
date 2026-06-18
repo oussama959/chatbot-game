@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jeu de Devine-Moi</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #6dd5ed, #2193b0);
+      color: white;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: text-decoration 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .welcome-section {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .welcome-section h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .welcome-section p {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .start-btn {
+      background-color: #fff;
+      color: #2193b0;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .start-btn:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <h1>Devine-Moi</h1>
+    <div class="nav-links">
+      <a href="/login-page">Connexion</a>
+      <a href="/register-page">Inscription</a>
+    </div>
+  </div>
+
+  <div class="welcome-section">
+    <h2>Bienvenue dans Devine-Moi !</h2>
+    <p>Un petit jeu où je tente de deviner à quoi tu penses en posant des questions 😄</p>
+    <a href="/index" class="start-btn">Commencer le jeu</a>
+  </div>
+</body>
+</html>

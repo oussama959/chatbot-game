@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devine-Moi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      
+      background: url('/static/chatbot.png') no-repeat center center/cover;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #2193b0;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 16px;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    .chat-container {
+      max-width: 700px;
+      margin: 50px auto;
+      background:transparent;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      background-color: transparent;
+    }
+
+    .bubble {
+      padding: 10px 15px;
+      border-radius: 15px;
+      margin: 8px 0;
+      max-width: 80%;
+      word-wrap: break-word;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .bot {
+      background-color: whitesmoke;
+      text-align: left;
+    }
+
+    .user {
+      background-color: white;
+      text-align: right;
+      margin-left: auto;
+    }
+
+    button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #2193b0;
+      color: white;
+      border: none;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #176888;
+    }
+
+    #chat-box {
+      min-height: 300px;
+      border: 1px solid #ddd ;
+      padding: 10px;
+      margin-top: 10px;
+      overflow-y: auto;
+      background-color: transparent;
+      border-radius: 8px;
+    }
+
+    #replay {
+      display: none;
+      margin-top: 15px;
+      background-color: #4CAF50;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .chat-container {
+        margin: 20px;
+        padding: 15px;
+      }
+    }
+    #volume-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 999;
+    color: #333;
+  }
+
+  #volume-control:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+  }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div>
+      <a href="/">Accueil</a>
+    </div>
+    <div>
+      <a href="/register-page">Inscription</a>
+      <a href="/login-page">Connexion</a>
+    </div>
+  </div>
+  <audio id="bg-music" autoplay loop>
+    <source src="\static\audio\Banana Kong Soundtrack - Main Theme - Extended.mp3" type="audio/mpeg">
+  </audio>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
+  <button onclick="toggleAudio()" class="volume-btn" id="volume-control">
+  <i id="volume-icon" class="fas fa-volume-up"></i>
+  </button>
+
+  <!-- Chatbot Container -->
+  <div class="chat-container">
+    <h2>🤖 Chatbot - Devine ton Objet</h2>
+
+    <div id="chat-box"></div>
+
+    <div id="input-area">
+      <input type="text" id="userInput" placeholder="Écris ta réponse ici (oui / non / je ne sais pas)" onkeydown="handleKey(event)">
+      <button onclick="sendTextAnswer()">Envoyer</button>
+    </div>
+
+    <button id="replay" onclick="location.reload()">🔁 Rejouer</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function toggleOptions() {
+      const options = document.getElementById('options');
+      options.style.display = options.style.display === 'none' ? 'block' : 'none';
+    }
+    const audio = document.getElementById("bg-music");
+    const icon = document.getElementById("volume-icon");
+
+    function toggleAudio() {
+        if (audio.paused) {
+            audio.play();
+            icon.classList.remove("fa-volume-mute");
+            icon.classList.add("fa-volume-up");
+        } else {
+            audio.pause();
+            icon.classList.remove("fa-volume-up");
+            icon.classList.add("fa-volume-mute");
+        }
+    }
+  let currentQuestion = null;
+
+  function addMessage(text, sender) {
+    const chatBox = document.getElementById("chat-box");
+    const div = document.createElement("div");
+    div.className = `bubble ${sender}`;
+    div.innerText = (sender === "bot" ? "🤖 " : "👤 ") + text;
+    chatBox.appendChild(div);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  async function startGame() {
+    try {
+      const res = await fetch("/start", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      });
+
+      if (!res.ok) throw new Error("Erreur serveur");
+
+      const data = await res.json();
+      document.getElementById("chat-box").innerHTML = "";
+      addMessage(data.message, "bot");
+      console.log("Question reçue :", data.next_question);
+
+      // 🛠️ Correction ici :
+      addMessage(data.next_question.text, "bot");
+      currentQuestion = data.next_question.key;
+
+      document.getElementById("input-area").style.display = "block";
+      document.getElementById("userInput").focus();
+    } catch (error) {
+      addMessage("❌ Une erreur est survenue. Réessaie plus tard.", "bot");
+    }
+  }
+
+  async function sendTextAnswer() {
+    if (!currentQuestion) {
+      addMessage("⏳ Patiente... Je réfléchis encore à la prochaine question !", "bot");
+      return;
+    }
+
+    const userInputField = document.getElementById("userInput");
+    const userInput = userInputField.value.trim().toLowerCase();
+    userInputField.value = "";
+
+    if (!userInput) return;
+
+    addMessage(userInput, "user");
+
+    let answer = null;
+    if (["oui", "yes"].includes(userInput)) answer = true;
+    else if (["non", "no"].includes(userInput)) answer = false;
+    else if (
+      ["je ne sais pas", "je sais pas", "je ne sais", "ne sais pas", "inconnu"].includes(userInput)
+    ) answer = null;
+    else {
+      addMessage("❌ Réponse invalide. Écris 'oui', 'non' ou 'je ne sais pas'.", "bot");
+      return;
+    }
+
+    try {
+      const res = await fetch("/answer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: currentQuestion, reponse: answer }),
+      });
+
+      if (!res.ok) throw new Error("Erreur serveur");
+
+      const data = await res.json();
+      currentQuestion = null;
+
+      if (data.guess !== undefined) {
+        if (data.guess) {
+          // Afficher une popup avec le nom de l'objet et son image
+          Swal.fire({
+            title: data.guess,
+            text: "Voici ce que j'ai deviné !",
+            imageUrl: data.image,
+            imageWidth: 200,
+            imageHeight: 200,
+            imageAlt: data.guess,
+            showCloseButton: true,
+            confirmButtonText: 'OK',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          });
+        } else {
+          addMessage(data.message || "😔 Je n'ai pas pu deviner ton objet.", "bot");
+        }
+        addMessage(`🏆 Ton score : ${data.score} points`, "bot");
+        document.getElementById("input-area").style.display = "none";
+        document.getElementById("replay").style.display = "inline-block";
+      } else {
+        currentQuestion = data.next_question.key;
+        addMessage(data.next_question.text, "bot");
+      }
+
+      userInputField.focus();
+    } catch (error) {
+      addMessage("❌ Une erreur est survenue pendant l'envoi de la réponse.", "bot");
+    }
+  }
+
+  function handleKey(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendTextAnswer();
+    }
+  }
+
+  function formatQuestion(q) {
+    const map = {
+      "estUnAnimal": "Est-ce un animal ?", "vole": "Est-ce que ça vole ?", 
+      "aquatique": "Est-ce que ça vit dans l'eau ?", "estDomestique": "Est-ce un animal domestique ?",
+      "vitDansLesArbres": "Est-ce que ça vit dans les arbres ?", "aDesPattes": "Est-ce que ça a des pattes ?",
+      "estCarnivore": "Est-ce un carnivore ?", "aboie": "Est-ce que ça aboie ?",
+      "grimpeAuxArbres": "Est-ce que ça grimpe aux arbres ?", "nageBien": "Est-ce que ça nage bien ?",
+      "vitEnGroupe": "Est-ce que ça vit en groupe ?"
+    };
+    return map[q] || q;
+  }
+
+  // Démarrer automatiquement le jeu
+  startGame();
+</script>
+
+</body>
+</html>
+
+
+

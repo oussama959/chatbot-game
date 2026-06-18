@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Devine-Moi</title>
+  
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', sans-serif;
+  background: url('/static/background.png') no-repeat center center/cover;
+  height: 100vh;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.title {
+  font-size: 48px;
+  margin-bottom: 30px;
+  color: #ffcc00;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.form-box {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  margin-top: 145px;}
+
+.name-input {
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+  width: 200px;
+}
+
+.btn {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+}
+
+.start-btn {
+  background-color: #4caf50;
+}
+
+.option-btn {
+  background-color: #ff9800;
+}
+
+.options-box {
+  margin-top: 15px;
+}
+
+.option-link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  margin: 5px 0;
+  font-weight: bold;
+}
+#popo{
+    text-decoration: none;
+    color: white;
+}
+.option-link:hover {
+  text-decoration: underline;
+}
+#volume-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 999;
+    color: #333;
+  }
+
+  #volume-control:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+  }
+  .btn:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+  }
+
+  </style>
+</head>
+<body>
+  <audio id="click-sound" src="/static/audio/mixkit-sci-fi-click-900.wav"></audio>
+  <audio id="click-soundd" src="/static/audio/mixkit-arcade-game-jump-coin-216.wav"></audio>
+    <audio id="bg-music" autoplay loop>
+        <source src="\static\audio\Banana Kong Soundtrack - Main Theme - Extended.mp3" type="audio/mpeg">
+      </audio>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
+    <button onclick="toggleAudio()" class="volume-btn" id="volume-control">
+    <i id="volume-icon" class="fas fa-volume-up"></i>
+    </button>
+  <div class="container">
+    
+    
+
+    <div class="form-box">
+      
+      <a id="popo" href="/index" class="btn start-btn">Start Game</a>
+
+      <button id="option" class="btn option-btn" onclick="toggleOptions()">Options</button>
+
+      <div id="options" class="options-box" style="display:none;">
+        <a href="/register-page" class="option-link">Inscrivez-vous</a>
+        <a href="/login-page" class="option-link">Connexion</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleOptions() {
+      const options = document.getElementById('options');
+      options.style.display = options.style.display === 'none' ? 'block' : 'none';
+    }
+    const audio = document.getElementById("bg-music");
+    const icon = document.getElementById("volume-icon");
+
+    function toggleAudio() {
+        if (audio.paused) {
+            audio.play();
+            icon.classList.remove("fa-volume-mute");
+            icon.classList.add("fa-volume-up");
+        } else {
+            audio.pause();
+            icon.classList.remove("fa-volume-up");
+            icon.classList.add("fa-volume-mute");
+        }
+    }
+    document.getElementById('popo').addEventListener('click', function(event) {
+      event.preventDefault(); // Empêche la redirection immédiate
+      const clickSound = document.getElementById('click-sound');
+      clickSound.currentTime = 0;
+      clickSound.play();
+      setTimeout(() => {
+        window.location.href = this.href;
+      }, 300); // redirige après 300ms
+    });
+
+    document.getElementById('option').addEventListener('click', function(event) {
+      const clickSound = document.getElementById('click-soundd');
+      clickSound.currentTime = 0;
+      clickSound.play();
+    });
+  
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+[
+    {
+        "nom": "chien",
+        "caracteristiques": {
+            "estUnAnimal": true,
+            "vole": false,
+            "aquatique": false,
+            "estDomestique": true,
+            "vitDansLesArbres": false,
+            "aDesPattes": true,
+            "estCarnivore": true,
+            "aboie": true,
+            "grimpeAuxArbres": false,
+            "nageBien": false,
+            "vitEnGroupe": true
+        },"image": "/static/image animaux/chien.jpg"
+    },
+    {
+        "nom": "poisson",
+        "caracteristiques": {
+            "estUnAnimal": true,
+            "vole": false,
+            "aquatique": true,
+            "estDomestique": false,
+            "vitDansLesArbres": false,
+            "aDesPattes": false,
+            "estCarnivore": false,
+            "aboie": false,
+            "grimpeAuxArbres": false,
+            "nageBien": true,
+            "vitEnGroupe": true
+        },"image": "/static/image animaux/poisson.jpg"
+    },
+    {
+        "nom": "oiseau",
+        "caracteristiques": {
+            "estUnAnimal": true,
+            "vole": true,
+            "aquatique": false,
+            "estDomestique": false,
+            "vitDansLesArbres": true,
+            "aDesPattes": true,
+            "estCarnivore": false,
+            "aboie": false,
+            "grimpeAuxArbres": false,
+            "nageBien": false,
+            "vitEnGroupe": false
+        },"image": "/static/image animaux/oiseau.jpg"
+    },
+    {
+        "nom": "chat",
+        "caracteristiques": {
+            "estUnAnimal": true,
+            "vole": false,
+            "aquatique": false,
+            "estDomestique": true,
+            "vitDansLesArbres": false,
+            "aDesPattes": true,
+            "estCarnivore": true,
+            "aboie": false,
+            "grimpeAuxArbres": true,
+            "nageBien": false,
+            "vitEnGroupe": false
+        },"image": "/static/image animaux/chat.jpg"
+    },
+    {
+        "nom": "dauphin",
+        "caracteristiques": {
+            "estUnAnimal": true,
+            "vole": false,
+            "aquatique": true,
+            "estDomestique": false,
+            "vitDansLesArbres": false,
+            "aDesPattes": false,
+            "estCarnivore": true,
+            "aboie": false,
+            "grimpeAuxArbres": false,
+            "nageBien": true,
+            "vitEnGroupe": true
+        },"image": "/static/image animaux/dauphin.jpg"
+    },
+    {
+        "nom": "aigle",
+        "caracteristiques": {
+            "estUnAnimal": true,
+            "vole": true,
+            "aquatique": false,
+            "estDomestique": false,
+            "vitDansLesArbres": false,
+            "aDesPattes": true,
+            "estCarnivore": true,
+            "aboie": false,
+            "grimpeAuxArbres": false,
+            "nageBien": false,
+            "vitEnGroupe": false
+        },"image": "/static/image animaux/aigle.jpg"
+    },
+    {
+        "nom": "serpent",
+        "caracteristiques": {
+            "estUnAnimal": true,
+            "vole": false,
+            "aquatique": false,
+            "estDomestique": false,
+            "vitDansLesArbres": false,
+            "aDesPattes": false,
+            "estCarnivore": true,
+            "aboie": false,
+            "grimpeAuxArbres": false,
+            "nageBien": false,
+            "vitEnGroupe": false
+        },"image": "/static/image animaux/serpent.jpg"
+    },
+    {
+        "nom": "grenouille",
+        "caracteristiques": {
+            "estUnAnimal": true,
+            "vole": false,
+            "aquatique": true,
+            "estDomestique": false,
+            "vitDansLesArbres": true,
+            "aDesPattes": true,
+            "estCarnivore": false,
+            "aboie": false,
+            "grimpeAuxArbres": false,
+            "nageBien": true,
+            "vitEnGroupe": false
+        },"image": "/static/image animaux/grenouille.jpg"
+    },
+    {
+        "nom": "cheval",
+        "caracteristiques": {
+            "estUnAnimal": true,
+            "vole": false,
+            "aquatique": false,
+            "estDomestique": true,
+            "vitDansLesArbres": false,
+            "aDesPattes": true,
+            "estCarnivore": false,
+            "aboie": false,
+            "grimpeAuxArbres": false,
+            "nageBien": false,
+            "vitEnGroupe": true
+        },"image": "/static/image animaux/cheval.jpg"
+    },
+    {
+        "nom": "canard",
+        "caracteristiques": {
+            "estUnAnimal": true,
+            "vole": true,
+            "aquatique": true,
+            "estDomestique": false,
+            "vitDansLesArbres": false,
+            "aDesPattes": true,
+            "estCarnivore": false,
+            "aboie": false,
+            "grimpeAuxArbres": false,
+            "nageBien": true,
+            "vitEnGroupe": true
+        },"image": "/static/image animaux/canard.jpg"
+    },
+    {
+        "nom": "hérisson",
+        "caracteristiques": {
+          "estUnAnimal": true,
+          "vole": false,
+          "aquatique": false,
+          "estDomestique": false,
+          "vitDansLesArbres": false,
+          "aDesPattes": true,
+          "estCarnivore": false,
+          "aboie": false,
+          "grimpeAuxArbres": false,
+          "nageBien": false,
+          "vitEnGroupe": false
+        },
+        "image": "/static/image animaux/herisson.avif"
+      },
+      
+    {
+        "nom": "tortue",
+        "caracteristiques": {
+          "estUnAnimal": true,
+          "vole": false,
+          "aquatique": true,
+          "estDomestique": false,
+          "vitDansLesArbres": false,
+          "aDesPattes": true,
+          "estCarnivore": false,
+          "aboie": false,
+          "grimpeAuxArbres": false,
+          "nageBien": true,
+          "vitEnGroupe": false
+        },
+        "image": "/static/image animaux/tortue.jpg"
+      },
+      
+    {
+        "nom": "kangourou",
+        "caracteristiques": {
+          "estUnAnimal": true,
+          "vole": false,
+          "aquatique": false,
+          "estDomestique": false,
+          "vitDansLesArbres": false,
+          "aDesPattes": true,
+          "estCarnivore": false,
+          "aboie": false,
+          "grimpeAuxArbres": false,
+          "nageBien": false,
+          "vitEnGroupe": true
+        },
+        "image": "/static/image animaux/kangourou.jpg"
+      },
+      
+  
+      {
+        "nom": "manchot",
+        "caracteristiques": {
+          "estUnAnimal": true,
+          "vole": false,
+          "aquatique": true,
+          "estDomestique": false,
+          "vitDansLesArbres": false,
+          "aDesPattes": true,
+          "estCarnivore": true,
+          "aboie": false,
+          "grimpeAuxArbres": false,
+          "nageBien": true,
+          "vitEnGroupe": true
+        },
+        "image": "/static/image animaux/manchot.jpg"
+      },
+      {
+        "nom": "hippopotame",
+        "caracteristiques": {
+          "estUnAnimal": true,
+          "vole": false,
+          "aquatique": true,
+          "estDomestique": false,
+          "vitDansLesArbres": false,
+          "aDesPattes": true,
+          "estCarnivore": false,
+          "aboie": false,
+          "grimpeAuxArbres": false,
+          "nageBien": true,
+          "vitEnGroupe": true
+        },
+        "image": "/static/image animaux/hippopotame.jpg"
+      },
+    
+     
+      {
+        "nom": "hibou",
+        "caracteristiques": {
+          "estUnAnimal": true,
+          "vole": true,
+          "aquatique": false,
+          "estDomestique": false,
+          "vitDansLesArbres": true,
+          "aDesPattes": true,
+          "estCarnivore": true,
+          "aboie": false,
+          "grimpeAuxArbres": false,
+          "nageBien": false,
+          "vitEnGroupe": false
+        },
+        "image": "/static/image animaux/hibou.jpg"
+      },
+      
+      {
+        "nom": "chauve-souris",
+        "caracteristiques": {
+          "estUnAnimal": true,
+          "vole": true,
+          "aquatique": false,
+          "estDomestique": false,
+          "vitDansLesArbres": true,
+          "aDesPattes": true,
+          "estCarnivore": true,
+          "aboie": false,
+          "grimpeAuxArbres": false,
+          "nageBien": false,
+          "vitEnGroupe": true
+        },
+        "image": "/static/image animaux/chauve-souris.jpg"
+      }
+      
+      
+      
+      
+      
+]
+
+
+
+
